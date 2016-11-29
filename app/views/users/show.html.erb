@@ -1,0 +1,41 @@
+Hello <%= @user.username %>! <br>
+<!-- Commissioner Stuff -->
+<% if @user.role == "Commissioner" %>
+	<% if @user.league == nil %>
+		<%= link_to "Create New League", new_league_path, method: :get %>
+	<% else %>
+		<h3 class="leaguename"><%= @user.league.league_name %></h3>
+		<% @user.league.teams.reverse.each do |t| %>
+			<div class="container col-md-12">
+				<div class="row margin-top-teamlist">
+					<div class="col-md-6 teamlink">
+						<br>
+						<%= link_to t.team_name, team_path(t), method: :get, :class => "team" %>
+					</div>
+					<div class="col-md-3"></div>
+					<div class="col-md-3"><%= image_tag t.symbol, width: "100px"%></div>
+				</div>
+			</div>
+		<% end %>
+		<div class="col-xs-12 margin-top-teamlist">
+			<%= button_to "Add Team", new_team_path, method: :get, :class => "btn btn-primary col-xs-5 margin-top-5" %>
+			<div class="col-xs-2"></div>
+			<%= button_to "End League", league_path(@user.league), method: :delete, :class => "btn btn-warning col-xs-5 margin-top-5" %>
+		</div>
+		<div class="col-xs-12 margin-top-5">
+			
+		</div>
+	<% end %>
+
+
+<!-- Manager Stuff -->
+<% elsif @user.role == "Manager" %>
+	<% if @user.team == nil %>
+	<%= link_to "Create New Team", new_team_path, method: :get %>
+	<% else %>
+		<p>Manage Your Team</p>
+		<h4><%= link_to @user.team.team_name, team_path(@user.team), method: :get, :class => "team" %></h4>
+	<% end %>
+<!-- Athlete Stuff -->
+<% end %>
+

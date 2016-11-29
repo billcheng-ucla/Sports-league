@@ -1,0 +1,32 @@
+<%= form_for @game, remote: true do |f| %>
+	<div class="container  col-xs-12 small-container">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="bold col-xs-12 margin-top-5">
+				    <b><%= "#{@game.guest.team_name} Score: " %></b>
+				</div>
+				<div class="col-xs-12 margin-top-5">
+				    <%= f.number_field :guest_score, class: "form-control" %>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="bold col-xs-12 margin-top-5">
+				    <b><%= "#{@game.home.team_name} Score: " %></b>
+				</div>
+				<div class="col-xs-12 margin-top-5">
+				    <%= f.number_field :home_score, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-5 margin-top-10">
+		    <%= f.submit "Set Scores", class: "btn btn-primary col-xs-12" %>
+		</div>
+		<div class="col-xs-2 margin-top-10"></div>
+		<div class="col-xs-5 margin-top-10">
+		    <%= button_to 'Cancel Game', 
+                game_path(@game), 
+                method: :delete, 
+                class: 'btn btn-danger col-xs-12 form-control'%>
+		</div>
+	</div>
+<% end %>

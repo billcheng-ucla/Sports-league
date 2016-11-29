@@ -1,0 +1,4 @@
+<h2 class="pagetitle">List of Leagues</h2>
+<% @leagues.each do |l| %>
+	<div class="leaguename"><%= link_to l.league_name, league_path(l)%></div>
+<% end %>

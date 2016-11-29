@@ -1,0 +1,39 @@
+<div id="newGame-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">New Game</h4>
+			</div>
+	        <div class="modal-body new-game-modal-body">
+					    <%= form_for(@game = Game.new) do |g|%>
+				        <div class="container well col-xs-12 small-container">
+			            <div class="bold col-xs-12 margin-top-10">
+			                Date of Game
+			            </div>
+			            <div class="col-xs-12 margin-top-5">
+			                <%= g.date_field :date, required: true, class: "form-control" %>
+			            </div>
+			            <div class="bold col-xs-12 margin-top-10">
+			                Home Team
+			            </div>
+			            <div class="col-xs-12 margin-top-5">
+			                <%= text_field_tag :home, @team.team_name, disabled: true, class: "form-control" %>
+			                <%= g.hidden_field :home, :value => @team.team_name, class: "form-control" %>
+			            </div>
+			            <div class="bold col-xs-12 margin-top-10">
+			                Guest Team
+			            </div>
+			            <div class="col-xs-12 margin-top-5">
+			                <%= g.select :guest, options_from_collection_for_select(@team.league.teams.where.not(id: @team.id), "id", "team_name"), {prompt: "Select Opponent"}, class: "form-control" %>
+			            </div>
+			            <div class="col-xs-12 margin-top-10">
+			                <%= submit_tag "New Game!", class: "btn btn-primary col-md-12" %>
+			            </div>
+				        </div>
+					    <% end %>
+	        </div>
+		</div>
+        
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="teampic" style="background-image:url(<%= @team.pic %>)"></div>
+<div class="teamname"><h3><%= @team.team_name %></h3></div>
+<div>
+	<div id="calendar"></div>
+</div>
+<% if current_user.role == "Commissioner" && current_user == @team.league.user %>
+	<div class="container col-md-12">
+		<div class="row">
+			<%= link_to "Add Home Game", '#newGame-modal', "data-toggle" => "modal", :class => "btn btn-primary margin-top-5 col-md-5" %>
+			<div class="col-md-2"></div>
+			<%= button_to "Edit Team", edit_team_path(@team), method: :get, :class => "btn btn-success margin-top-5 col-md-5" %>
+		</div>
+	</div>
+	<%= render "partials/new_game" %>
+	<%= render "games/edit" %>
+<% elsif current_user == @team.manager %>
+	<div class="container col-md-12">
+		<div class="row">
+			<%= link_to "Add Event", '#newEvent-modal', "data-toggle" => "modal", :class => "col-md-5 btn btn-primary margin-top-5" %>
+			<div class="col-md-2"></div>
+			<%= button_to "Edit Team", edit_team_path(@team), method: :get, :class => "col-md-5 btn btn-success margin-top-5" %>
+		</div>
+	</div>
+ 	<%= render "partials/new_event" %>
+	<%= render "events/edit" %>
+ 	
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-11-25
+  home_score: 1
+  guest_score: 1
+
+two:
+  date: 2016-11-25
+  home_score: 1
+  guest_score: 1

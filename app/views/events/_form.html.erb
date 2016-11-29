@@ -1,0 +1,30 @@
+<%= form_for @event, remote: true do |e| %>
+	<div class="container well col-xs-12 small-container">
+		<div class="bold col-xs-12 margin-top-10">
+            Date of Event
+        </div>
+        <div class="col-xs-12 margin-top-5">
+            <%= e.date_field :date,  class: "form-control" %>
+        </div>
+        <div class="bold col-xs-12 margin-top-10">
+            Event Description
+        </div>
+        <div class="col-xs-12 margin-top-5">
+            <%= e.text_area :description,  class: "form-control" %>
+        </div>
+
+            <div class="col-xs-5 margin-top-10">
+                <%= e.submit "Edit Event", class: "btn btn-primary col-xs-12 form-control" %>
+            </div>
+            <div class="col-xs-2 margin-top-10"></div>
+            <div class="col-xs-5 margin-top-10">
+                <%= button_to 'Delete', 
+                event_path(@event), 
+                method: :delete, 
+                class: 'btn btn-danger col-xs-12 form-control'%>
+            </div>
+
+		
+        
+	</div>
+<% end %>

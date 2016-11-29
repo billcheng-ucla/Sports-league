@@ -1,0 +1,44 @@
+<div class="container">
+	<h2>Edit Team</h2>
+	<p>Team Manager: <% if @team.manager %><%= @team.manager.username%><% else %><%= "None"%><% end %></p>
+	<!-- Commissioner Stuff -->
+	<% if current_user == @team.league.user %>
+		<div class="col-xs-6 edit-profile">
+		    <%= form_for @team do |f| %>
+		      <% @managers = User.where(role: "Manager") %>
+		      <div class="margin-top-20">
+		          <%= select("manager", "manager_id", User.where(role: "Manager").where.not(id: Team.pluck(:manager_id)).collect {|c| [ c.username, c.id ] }, {prompt: 'Select Team Manager'}) %>
+		      </div>
+		          <%= f.hidden_field :team_name, class: "btn btn-primary margin-top-5" %>
+		      <div class="margin-top-20">
+		          <%= f.submit "Update Team Manager", class: "btn btn-primary margin-top-5" %>
+		      </div>
+		    <% end %>
+		</div>
+
+	<!-- Manager Stuff -->
+	<% elsif current_user == @team.manager %>
+		<div class="col-xs-6 edit-profile">
+		    <%= form_for @team do |f| %>
+		    	<div class="col-xs-12 margin-top-5">
+		    	    <%= f.text_field :team_name, class: "form-control", placeholder: "Name of your team" %>
+		    	</div>
+		    	<div class="col-xs-12 margin-top-5">
+		    	    <%= f.text_field :tag, class: "form-control", placeholder: "Tag of your team (3 letters)" %>
+		    	</div>
+		    	<div class="col-xs-12 margin-top-5">
+		    	    <label for="symbol">Team Picture</label>
+		    	    <%= f.file_field :pic, class: "update-pic" %>
+		    	</div>
+		    	<div class="col-xs-12 margin-top-5">
+		    	    <label for="symbol">Team Symbol</label>
+		    	    <%= f.file_field :symbol, class: "update-pic" %>
+		    	</div>
+		        <div class="margin-top-20">
+		            <%= f.submit "Update Team", class: "btn btn-primary margin-top-5" %>
+		        </div>
+		    <% end %>
+		</div>
+
+	<% end %>
+</div>

@@ -1,0 +1,20 @@
+<h3>New Team</h3>
+<%= form_for @team do |t| %>
+<div class="col-xs-12 margin-top-5">
+    <%= t.text_field :team_name, class: "form-control", placeholder: "Name of your team" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <%= t.text_field :tag, class: "form-control", placeholder: "Tag of your team (3 letters)" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <label for="symbol">Team Picture</label>
+    <%= t.file_field :pic, class: "update-pic" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <label for="symbol">Team Symbol</label>
+    <%= t.file_field :symbol, class: "update-pic" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <%= t.submit "Create New Team", class: "btn btn-success btn-lg btn-block btn-signuplog" %>
+</div>
+<% end %>

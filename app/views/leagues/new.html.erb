@@ -1,0 +1,12 @@
+<h3>New League</h3>
+<%= form_for @league do |l| %>
+<div class="col-xs-12 margin-top-5">
+    <%= l.text_field :league_name, class: "form-control", placeholder: "Name of your league" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <%= l.text_field :sport, class: "form-control", placeholder: "Type of league (eg. Baseball)" %>
+</div>
+<div class="col-xs-12 margin-top-5">
+    <%= l.submit "Create New League", class: "btn btn-success btn-lg btn-block btn-signuplog" %>
+</div>
+<% end %>

@@ -1,0 +1,55 @@
+<div class='wrapper main-page-content'>
+<div class="row main-page-row">
+	<div class="container">
+	  <div class="container well col-xs-12 small-container" id="login">
+	  	<div class="row">
+	  		<div class="col-md-5"><h4 class="title margin-top-35" style='color:#000'>Sports League</h4></div>
+	  		<div class="col-md-7">
+	  			<%= form_tag(login_path, id: "login_form") do %>
+
+	  					
+	  					<div class="col-xs-5">
+	  						<b>Username</b> <br>
+	  						<%= text_field_tag :username, nil, required: true, class: "form-control margin-top-5"%>
+	  					</div>
+	  					<div class="col-xs-5">
+	  						<b>Password</b>
+	  						<%= password_field_tag :password, nil, required: true, class: "form-control margin-top-5" %>
+	  					</div>
+	  					<div class="col-xs-2">
+	  						<br>
+	  						<%= submit_tag "Log In!", class: "btn btn-primary margin-top-5" %>
+	  					</div>
+	  				
+	  			<% end %>
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+	<div class="col-xs-5"><%= image_tag "http://findicons.com/files/icons/2799/flat_icons/256/trophy.png", width: "500", height: "360"%></div>
+	<div class="col-xs-5 register right">
+		<%= form_for (@user = User.new) do |f| %>
+			<div class="container well col-xs-12 small-container signup-container" id="signup">
+				<div class="col-xs-12 margin-login newaccountmsg">
+					<h4>Don't have an account? Make a new one!</h4>
+				</div>
+				<div class="col-xs-12 margin-login">
+					<%= f.text_field :username, class: "form-control margin-top-5", placeholder: "Username" %>
+				</div>
+				<div class="col-xs-12 margin-login">
+					<%= f.email_field :email, class: "form-control margin-top-5", placeholder: "Email" %>
+				</div>
+				<div class="col-xs-12 margin-login">
+					<%= f.password_field :password, class: "form-control margin-top-5", placeholder: "Password" %>
+				</div>
+				<div class="col-xs-12 margin-login">
+	                <%= f.select :role, [['Commissioner'],['Manager'], ['Athlete']], { prompt: 'Select Job' }, :class => "form-control inline-block center_vertical margin-top-5" %>
+	            </div>
+				<div class="col-xs-12 margin-login">
+					<%= f.submit "Sign Up!", class: "btn btn-primary margin-top-5 form-control" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+</div>
