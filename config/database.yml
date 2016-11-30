@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: Sports-league_production
-  username: Sports-league
-  password: <%= ENV['SPORTS-LEAGUE_DATABASE_PASSWORD'] %>
+  
