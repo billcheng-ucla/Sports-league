@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		p "Update"
 		@event = Event.find(params[:id])
     @event.update(event_params)
     @event.save
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  	p "Destroy"
 		Event.destroy(params[:id])
 		redirect_to current_user.team
 	end

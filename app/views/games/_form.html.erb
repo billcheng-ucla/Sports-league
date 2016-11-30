@@ -23,10 +23,11 @@
 		</div>
 		<div class="col-xs-2 margin-top-10"></div>
 		<div class="col-xs-5 margin-top-10">
-		    <%= button_to 'Cancel Game', 
+		    <%= link_to 'Cancel Game', 
                 game_path(@game), 
                 method: :delete, 
-                class: 'btn btn-danger col-xs-12 form-control'%>
+                class: 'btn btn-danger col-xs-12 form-control',
+                remote: true %>
 		</div>
 	</div>
 <% end %>

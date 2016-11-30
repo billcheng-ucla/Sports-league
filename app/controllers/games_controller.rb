@@ -17,6 +17,7 @@ class GamesController < ApplicationController
 	end
 
 	def update
+		p "Update Game"
 		@game = Game.find(params[:id])
     @game.update(game_params)
     @game.save
@@ -24,6 +25,7 @@ class GamesController < ApplicationController
   end
 
   def destroy
+  	p 'Destoy Game'
   	Game.destroy(params[:id])
   	redirect_to :back
   end
